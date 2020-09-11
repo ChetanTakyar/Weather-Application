@@ -1,3 +1,11 @@
 #cityInputBox{
-    border-radius: 12px;
+    display: block;
+    border-radius: 8px;
+    border-color: #536DFE;
+    color: #212121;
+    margin: 0 auto;
+    width: 20%;
+    margin-top: 5em;
+    height: 3em;
+ 
 }
