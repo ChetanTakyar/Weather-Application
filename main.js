@@ -1,6 +1,5 @@
 function fetchWeather(input) {
-  const proxyURI = "https://cors-anywhere.herokuapp.com/";
-  const URI = proxyURI+"https://www.metaweather.com/api/location/search/?query=" + input;
+  const URI ="https://www.metaweather.com/api/location/search/?query=" + input;
 	const fetchPromise = fetch(URI, {
 		headers: {
 			Accept: "application/json",
@@ -19,8 +18,15 @@ function fetchWeather(input) {
     const allInfoStream = allInfo.then(data => data.json());
 
     allInfoStream.then((allData) => {
-      console.log(allData.title);
+		let weatherSummary = "";
 
+		weatherSummary = `
+			<h2>Today's forecast for ${allData.title}</h2>
+			<h4>Max Temperature Today: ${allData.consolidated_weather[0].max_temp}</h4>
+			<h4>Min Temperature Today: ${allData.consolidated_weather[0].min_temp}</h4>
+		`;
+
+		document.getElementById("weatherInfo").innerHTML = weatherSummary;
     })
 	});
 }
